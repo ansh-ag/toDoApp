@@ -20,6 +20,7 @@ export class AppComponent {
   }
 
   addNew(value : string){
+    if(value.length > 0){
     let myToDo = {
       "text" : value,
       "isCompleted" : false
@@ -28,6 +29,7 @@ export class AppComponent {
     this.myToDoList.push(myToDo);
 
     localStorage.setItem('cacheList', JSON.stringify(this.myToDoList));
+  }
   }
 
   done(index:number){
