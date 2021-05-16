@@ -21,15 +21,15 @@ export class AppComponent {
 
   addNew(value : string){
     if(value.length > 0){
-    let myToDo = {
-      "text" : value,
-      "isCompleted" : false
+      let myToDo = {
+        "text" : value,
+        "isCompleted" : false
+      }
+
+      this.myToDoList.push(myToDo);
+
+      localStorage.setItem('cacheList', JSON.stringify(this.myToDoList));
     }
-
-    this.myToDoList.push(myToDo);
-
-    localStorage.setItem('cacheList', JSON.stringify(this.myToDoList));
-  }
   }
 
   done(index:number){
