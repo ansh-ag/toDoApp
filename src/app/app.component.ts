@@ -1,6 +1,18 @@
 import { Component } from '@angular/core';
 
 
+
+class ToDo {
+  
+  text :string = "";
+  isCompleted : boolean = false;
+  
+  
+  constructor(value:string){
+    this.text = value;
+  }
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,7 +20,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  myToDoList = [];
+  myToDoList: ToDo[] = [];
 
   constructor(){
     const myList = JSON.parse(localStorage.getItem('cacheList'));
@@ -20,25 +32,28 @@ export class AppComponent {
   }
 
   addNew(value : string){
-    let myToDo = {
-      "text" : value,
-      "isCompleted" : false
-    }
 
-    this.myToDoList.push(myToDo);
+    let todo = new ToDo(value);
 
-    localStorage.setItem('cacheList', JSON.stringify(this.myToDoList));
+    this.myToDoList.push(todo);
+
+    this.syncWithCache()  
   }
 
   done(index:number){
-   this.myToDoList[index].isCompleted = true; 
-   localStorage.setItem('cacheList', JSON.stringify(this.myToDoList));
 
+   this.myToDoList[index].isCompleted = true; 
+   this.syncWithCache()
   }
   
 
   remove(index:number){
     this.myToDoList.splice(index,1);  
+    this.syncWithCache()
+  }
+
+
+  syncWithCache(){
     localStorage.setItem('cacheList', JSON.stringify(this.myToDoList));
 
   }
