@@ -1,19 +1,27 @@
+<div class="titleDec">Todo App</div>
+<div class="card">
+  <div class="inputDec">
+    <input type="text"  #val>
+    <button (click)="addNew(val.value); val.value=''">add</button> 
+  </div>
 
-<input type="text" #val>
-<button (click)="addNew(val.value); val.value=''">add</button> 
 
-<div *ngFor="let item of myToDoList;let i = index"> 
+<div class="textDecor">
+<div class="inputDecor" *ngFor="let item of myToDoList;let i = index"> 
     <span [ngClass]="
     {
     'done' : item.isCompleted == true,
     'not_done':item.isCompleted == false
   
-  }">
-  {{item.text}}
+    }">
+
+      {{item.text}}
 </span>
-  <button (click)="done(i)"> Complete </button>
+
+  <button class="completedDec" (click)="done(i)"> Complete </button>
 
 
-  <button (click)="remove(i)"> Remove </button>
-
+  <button class="removeDec" (click)="remove(i)"> Remove </button>
+</div>
+</div>
 </div>
