@@ -22,9 +22,9 @@ export class AppComponent {
   }
 
   done(index:number){
-    this.inputService.myToDoList[index].isCompleted = true; 
-    localStorage.setItem('cacheList', JSON.stringify(this.inputService.myToDoList));
-     
+//     this.inputService.myToDoList[index].isCompleted = true; 
+//     localStorage.setItem('cacheList', JSON.stringify(this.inputService.myToDoList));
+     this.inputService.done(index);
    }
 
   newDodo(newInputData){
