@@ -1,0 +1,37 @@
+<div class="card">
+<div class="textDecor">
+    <div class="inputDecor" style="border-bottom: 1px solid rgb(58, 61, 58); padding: 0%;" *ngFor="let item of list;let i = index"> 
+        
+    
+  <div *ngIf="item.editable"> 
+      <input type="text" #newItem [value]="item.text">
+      <button (click)="save(newItem.value, i)">Save</button>
+    </div>
+    
+    <ul>
+      <ol>
+      <ng-container *ngIf="!item.editable" >
+        <span class="itemDecor" [ngClass]= "
+        {
+        'done' : item.isCompleted == true,
+        'not_done':item.isCompleted == false
+      
+        }">
+    
+        {{item.text}}
+        
+        </span>
+      
+      <button (click)="item.editable = true" >Edit</button>
+      <button class="completedDec" (click)="done(i)"> Complete </button>
+      <button class="removeDec" (click)="remove(i)" > Remove </button>
+      </ng-container>
+    
+    </ol>
+    </ul>
+    
+    </div>
+    
+  </div>
+    
+</div>   

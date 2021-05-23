@@ -1,0 +1,30 @@
+.inputDec{
+    text-align: center;
+    margin-top: 2%;
+
+   }
+   
+   .card {
+    box-shadow: 11px 12px 8px 0 rgba(0, 0, 0, 0.2);
+
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+    margin-left: 30%;
+    margin-right:30%
+
+  }
+
+  .inputDecor{
+    width: 80%;
+    height: 20px;
+    
+  }
+
+  .addDec{
+    margin-left:1%;
+    width: 10%;
+    height: 25px;
+    color:white;
+    background-color: rgb(45, 45, 133);
+  }

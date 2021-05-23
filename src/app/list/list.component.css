@@ -1,0 +1,36 @@
+.done{
+    text-decoration: line-through;
+}
+
+.inputDecor{
+    text-align: center;
+    margin-top: 0.5%;
+}
+
+.removeDec{
+    color: red;
+}
+.completedDec{
+    color:green;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+    margin-left: 30%;
+    margin-right:30%
+
+  }
+
+.textDecor{
+    margin: 20px;
+    }
+
+.itemDecor{
+    margin: 30px;
+    
+   
+}
+

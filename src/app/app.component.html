@@ -1,27 +1,9 @@
-<div class="titleDec">Todo App</div>
-<div class="card">
-  <div class="inputDec">
-    <input type="text"  #val>
-    <button (click)="addNew(val.value); val.value=''">add</button> 
-  </div>
-
-
-<div class="textDecor">
-<div class="inputDecor" *ngFor="let item of myToDoList;let i = index"> 
-    <span [ngClass]="
-    {
-    'done' : item.isCompleted == true,
-    'not_done':item.isCompleted == false
-  
-    }">
-
-      {{item.text}}
-</span>
-
-  <button class="completedDec" (click)="done(i)"> Complete </button>
-
-
-  <button class="removeDec" (click)="remove(i)"> Remove </button>
+<div class="titleDec">Todo App
+<button class="loginButton"> Login</button>
+<button> SignUp</button>
 </div>
-</div>
-</div>
+
+
+<app-input (newTodo)="newDodo($event)" ></app-input> 
+<app-list [list]="inputService.myToDoList" (complete)="done($event)" (removeIn)="remove($event)"
+(editIn)="edit($event)"></app-list> 

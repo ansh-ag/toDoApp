@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import {ServiceInputService} from 'src/app/service-input.service'
 
 
 @Component({
@@ -7,43 +8,48 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
-  myToDoList = [];
-
-  constructor(){
+  
+  
+  
+  constructor(public inputService:ServiceInputService){
     const myList = JSON.parse(localStorage.getItem('cacheList'));
+  
 
-    if(myList !== null){
-      this.myToDoList = myList;
-    }
-
-  }
-
-  addNew(value : string){
-    if(value.length > 0){
-      let myToDo = {
-        "text" : value,
-        "isCompleted" : false
+    if(myList !== null) {
+    this.inputService.myToDoList = myList;
       }
-
-      this.myToDoList.push(myToDo);
-
-      localStorage.setItem('cacheList', JSON.stringify(this.myToDoList));
-    }
+  
   }
 
   done(index:number){
-   this.myToDoList[index].isCompleted = true; 
-   localStorage.setItem('cacheList', JSON.stringify(this.myToDoList));
+    this.inputService.myToDoList[index].isCompleted = true; 
+    localStorage.setItem('cacheList', JSON.stringify(this.inputService.myToDoList));
+     
+   }
 
-  }
+  newDodo(newInputData){
+     this.inputService.myToDoList.push(newInputData);
+     localStorage.setItem('cacheList', JSON.stringify(this.inputService.myToDoList));
+
+   }
   
 
-  remove(index:number){
-    this.myToDoList.splice(index,1);  
-    localStorage.setItem('cacheList', JSON.stringify(this.myToDoList));
+   remove(i){
+     this.inputService.myToDoList.splice(i, 1);
+     localStorage.setItem('cacheList', JSON.stringify(this.inputService.myToDoList));
 
-  }
+
+   }
+   edit(obj){
+    // this.list[i].text = valS;
+    // this.list[i].editable = false;
+    this.inputService.myToDoList[obj.index].text = obj.value;
+    this.inputService.myToDoList[obj.index].editable = false;
+    localStorage.setItem('cacheList', JSON.stringify(this.inputService.myToDoList));
+
+
+   }
+
 
 
 }
